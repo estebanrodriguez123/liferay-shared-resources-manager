@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.rivetlogic.assetmanagement.model.Asset">
+		<field name="uuid" type="String" />
+		<field name="assetId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="description" type="String">
+			<hint name="max-length">5000</hint>
+		</field>
+		<field name="location" type="String" />
+		<field name="active" type="Boolean" />
+		<field name="category" type="String" />
+		<field name="status" type="String" />
+		<field name="mimeType" type="String" />
+		<field name="photo" type="Blob" />
+		<field name="currentUserId" type="Long" />
+	</model>
+	<model name="com.rivetlogic.assetmanagement.model.AssetCategory">
+		<field name="uuid" type="String" />
+		<field name="assetCategoryId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="description" type="String" />
+	</model>
+	<model name="com.rivetlogic.assetmanagement.model.AssetLocation">
+		<field name="uuid" type="String" />
+		<field name="assetLocationId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="description" type="String" />
+	</model>
+	<model name="com.rivetlogic.assetmanagement.model.AssetMessage">
+		<field name="uuid" type="String" />
+		<field name="assetMessageId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="assetId" type="long" />
+		<field name="fromUserId" type="long" />
+		<field name="toUserId" type="long" />
+		<field name="message" type="String" />
+	</model>
+	<model name="com.rivetlogic.assetmanagement.model.AssetRequest">
+		<field name="uuid" type="String" />
+		<field name="assetRequestId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="assetId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="companyId" type="long" />
+		<field name="userName" type="String" />
+		<field name="requestedDate" type="Date" />
+		<field name="assingedDate" type="Date" />
+		<field name="bookedDate" type="Date" />
+		<field name="returnedDate" type="Date" />
+		<field name="status" type="String" />
+		<field name="priority" type="String" />
+		<field name="description" type="String" />
+	</model>
+</model-hints>

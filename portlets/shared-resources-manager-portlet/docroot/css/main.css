@@ -1,0 +1,18 @@
+.request-asset-image-container {
+	height: 200px;
+}
+
+.request-asset-image {
+	width: auto;
+    height: calc(100% - 20px)!important;
+}
+
+/* Image style in the columns */
+.table-column-image {
+	width: 15%;
+}
+
+.column-image {
+	width: 100%;
+	height: auto;
+}
