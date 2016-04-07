@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.rivetlogic.assetmanagement.service.AssetLocalService" class="com.rivetlogic.assetmanagement.service.impl.AssetLocalServiceImpl" />
+	<bean id="com.rivetlogic.assetmanagement.service.persistence.AssetPersistence" class="com.rivetlogic.assetmanagement.service.persistence.AssetPersistenceImpl" parent="basePersistence" />
+	<bean id="com.rivetlogic.assetmanagement.service.AssetCategoryLocalService" class="com.rivetlogic.assetmanagement.service.impl.AssetCategoryLocalServiceImpl" />
+	<bean id="com.rivetlogic.assetmanagement.service.persistence.AssetCategoryPersistence" class="com.rivetlogic.assetmanagement.service.persistence.AssetCategoryPersistenceImpl" parent="basePersistence" />
+	<bean id="com.rivetlogic.assetmanagement.service.AssetLocationLocalService" class="com.rivetlogic.assetmanagement.service.impl.AssetLocationLocalServiceImpl" />
+	<bean id="com.rivetlogic.assetmanagement.service.persistence.AssetLocationPersistence" class="com.rivetlogic.assetmanagement.service.persistence.AssetLocationPersistenceImpl" parent="basePersistence" />
+	<bean id="com.rivetlogic.assetmanagement.service.AssetMessageLocalService" class="com.rivetlogic.assetmanagement.service.impl.AssetMessageLocalServiceImpl" />
+	<bean id="com.rivetlogic.assetmanagement.service.persistence.AssetMessagePersistence" class="com.rivetlogic.assetmanagement.service.persistence.AssetMessagePersistenceImpl" parent="basePersistence" />
+	<bean id="com.rivetlogic.assetmanagement.service.AssetRequestLocalService" class="com.rivetlogic.assetmanagement.service.impl.AssetRequestLocalServiceImpl" />
+	<bean id="com.rivetlogic.assetmanagement.service.persistence.AssetRequestPersistence" class="com.rivetlogic.assetmanagement.service.persistence.AssetRequestPersistenceImpl" parent="basePersistence" />
+</beans>

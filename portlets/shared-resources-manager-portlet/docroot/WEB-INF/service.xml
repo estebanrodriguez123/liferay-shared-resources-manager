@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="com.rivetlogic.assetmanagement">
+	<author>Manrique Varela</author>
+	<namespace>rivetlogic</namespace>
+
+	<entity name="Asset" local-service="true" remote-service="false"
+		uuid="true">
+
+		<!-- PK fields -->
+		<column name="assetId" type="long" primary="true" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="name" type="String" />
+		<column name="description" type="String" />
+		<column name="location" type="String" />
+		<column name="active" type="Boolean" />
+		<column name="category" type="String" />
+		<column name="status" type="String" />
+		<column name="mimeType" type="String" />
+		<column name="photo" type="Blob" />
+		<column name="currentUserId" type="Long" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="assetId" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		<finder name="CompanyGroup" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		<finder name="CompanyGroupUser" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="userId"></finder-column>
+		</finder>
+	</entity>
+
+	<entity name="AssetCategory" local-service="true"
+		remote-service="false" uuid="true">
+
+		<!-- PK fields -->
+		<column name="assetCategoryId" type="long" primary="true" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="name" type="String" />
+		<column name="description" type="String" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		<finder name="CompanyGroup" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		<finder name="CompanyGroupUser" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="userId"></finder-column>
+		</finder>
+	</entity>
+
+	<entity name="AssetLocation" local-service="true"
+		remote-service="false" uuid="true">
+
+		<!-- PK fields -->
+		<column name="assetLocationId" type="long" primary="true" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="name" type="String" />
+		<column name="description" type="String" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		<finder name="CompanyGroup" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		<finder name="CompanyGroupUser" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="userId"></finder-column>
+		</finder>
+	</entity>
+
+	<entity name="AssetMessage" local-service="true" remote-service="false"
+		uuid="true">
+
+		<!-- PK fields -->
+		<column name="assetMessageId" type="long" primary="true" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="companyId" type="long" />
+		<column name="createDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="assetId" type="long" />
+		<column name="fromUserId" type="long" />
+		<column name="toUserId" type="long" />
+		<column name="message" type="String" />
+
+		<!-- Order -->
+		<order by="desc">
+			<order-column name="createDate" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		<finder name="CompanyGroup" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+		</finder>
+	</entity>
+
+	<entity name="AssetRequest" local-service="true" remote-service="false"
+		uuid="true">
+
+		<!-- PK fields -->
+		<column name="assetRequestId" type="long" primary="true" />
+
+		<!-- Group instance -->
+		<column name="groupId" type="long" />
+
+		<!-- FK fields -->
+		<column name="assetId" type="long" />
+		<column name="userId" type="long" />
+
+		<!-- Audit fields -->
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+		<column name="companyId" type="long" />
+		<column name="userName" type="String" />
+
+		<!-- Other fields -->
+		<column name="requestedDate" type="Date" />
+		<column name="assingedDate" type="Date" />
+		<column name="bookedDate" type="Date" />
+		<column name="returnedDate" type="Date" />
+		<column name="status" type="String" />
+		<column name="priority" type="String" />
+		<column name="description" type="String" />
+
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="assetRequestId" />
+		</order>
+
+		<!-- Finder methods -->
+		<finder name="GroupId" return-type="Collection">
+			<finder-column name="groupId" />
+		</finder>
+		<finder name="CompanyGroup" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+		</finder>
+		<finder name="CompanyGroupUser" return-type="Collection">
+			<finder-column name="companyId"></finder-column>
+			<finder-column name="groupId"></finder-column>
+			<finder-column name="userId"></finder-column>
+		</finder>
+	</entity>
+
+</service-builder>
