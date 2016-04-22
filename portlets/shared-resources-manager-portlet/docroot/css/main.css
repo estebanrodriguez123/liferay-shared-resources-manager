@@ -17,3 +17,7 @@
 .table-column-image {
 	width: 10%;
 }
+
+.resource-image-container img {
+		max-width: 50%;
+}
