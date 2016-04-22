@@ -53,73 +53,13 @@ message="asset-success-created"/>
 
 <aui:row>
 
-	<aui:column>
-
-		<aui:form action="<%=editAssetURL%>" method="POST"
-			name="<portlet:namespace />fm">
-
-			<aui:fieldset>
-
-				<aui:input name="assetId" type="hidden" />
-
-				<aui:input name="redirect" type="hidden" value="<%=redirect%>" />
-
-				<aui:select name="location" showEmptyOption="true">
-					<%
-						for (AssetLocation location : locations) {
-					%>
-					<aui:option value="<%=location.getName()%>"
-						selected="<%=location.getName().equals(asset.getLocation())%>"><%=location.getName()%></aui:option>
-					<%
-						}
-					%>
-				</aui:select>
-
-				<aui:select name="category" showEmptyOption="true">
-					<%
-						for (AssetCategory category : categories) {
-					%>
-					<aui:option value="<%=category.getName()%>"
-						selected="<%=category.getName().equals(asset.getCategory())%>"><%=category.getName()%></aui:option>
-					<%
-						}
-					%>
-				</aui:select>
-
-				<aui:input name="name" />
-
-				<aui:input name="description" type="textarea" />
-
-				<aui:input name="active" type="checkbox"
-					value="<%=String.valueOf(asset.getActive())%>" />
-
-			</aui:fieldset>
-
-			<aui:button-row>
-
-				<aui:button type="submit"></aui:button>
-
-				<aui:button type="cancel" onClick="<%= viewManageAssetsURL %>"></aui:button>
-
-				<aui:button value="delete-asset" cssClass="btn-danger"
-					onClick="javascript:confirmDel()" />
-
-			</aui:button-row>
-
-		</aui:form>
-
-	</aui:column>
-
-	<aui:column>
+	<aui:col width="40">
 		<portlet:resourceURL var="imageResourceURL">
 			<portlet:param name="assetId" value="<%=String.valueOf(assetId)%>" />
 		</portlet:resourceURL>
-
-		<div
-			class="control-group input-text-wrapper  request-asset-image-container">
-			<label class="control-label"> Current Photo </label> <img
-				class="request-asset-image" src="<%=imageResourceURL.toString()%>"
-				alt="<%=asset.getName()%>" />
+		
+		<div class="resource-image-container">
+			<img class="admin-img" src="<%=imageResourceURL.toString()%>" alt="<%=asset.getName()%>" />
 		</div>
 
 		<div class="control-group input-String-wrapper">
@@ -148,7 +88,64 @@ message="asset-success-created"/>
 		</aui:form>
 
 
-	</aui:column>
+	</aui:col>
+	
+	<aui:col width="60">
+
+		<aui:form action="<%=editAssetURL%>" method="POST"
+			name="<portlet:namespace />fm">
+
+			<aui:fieldset>
+
+				<aui:input name="assetId" type="hidden" />
+
+				<aui:input name="redirect" type="hidden" value="<%=redirect%>" />
+
+				<aui:select name="location" showEmptyOption="true">
+					<%
+						for (AssetLocation location : locations) {
+					%>
+					<aui:option value="<%=location.getPrimaryKey()%>"
+						selected="<%=location.getPrimaryKey() == asset.getLocation()%>"><%=location.getName()%></aui:option>
+					<%
+						}
+					%>
+				</aui:select>
+
+				<aui:select name="category" showEmptyOption="true" >
+					<%
+						for (AssetCategory category : categories) {
+					%>
+					<aui:option value="<%=category.getPrimaryKey()%>"
+						selected="<%=category.getPrimaryKey() ==asset.getCategory()%>"><%=category.getName()%></aui:option>
+					<%
+						}
+					%>
+				</aui:select>
+
+				<aui:input name="name" />
+
+				<aui:input name="description" type="textarea" />
+
+				<aui:input name="active" type="checkbox"
+					value="<%=String.valueOf(asset.getActive())%>" />
+
+			</aui:fieldset>
+
+			<aui:button-row>
+
+				<aui:button type="submit"></aui:button>
+
+				<aui:button type="cancel" onClick="<%= viewManageAssetsURL %>"></aui:button>
+
+				<aui:button value="delete-asset" cssClass="btn-danger"
+					onClick="javascript:confirmDel()" />
+
+			</aui:button-row>
+
+		</aui:form>
+
+	</aui:col>
 
 </aui:row>
 

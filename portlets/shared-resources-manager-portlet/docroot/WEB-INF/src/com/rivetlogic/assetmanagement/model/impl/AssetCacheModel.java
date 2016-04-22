@@ -127,21 +127,9 @@ public class AssetCacheModel implements CacheModel<Asset>, Externalizable {
 			assetImpl.setDescription(description);
 		}
 
-		if (location == null) {
-			assetImpl.setLocation(StringPool.BLANK);
-		}
-		else {
-			assetImpl.setLocation(location);
-		}
-
+		assetImpl.setLocation(location);
 		assetImpl.setActive(active);
-
-		if (category == null) {
-			assetImpl.setCategory(StringPool.BLANK);
-		}
-		else {
-			assetImpl.setCategory(category);
-		}
+		assetImpl.setCategory(category);
 
 		if (status == null) {
 			assetImpl.setStatus(StringPool.BLANK);
@@ -176,9 +164,9 @@ public class AssetCacheModel implements CacheModel<Asset>, Externalizable {
 		modifiedDate = objectInput.readLong();
 		name = objectInput.readUTF();
 		description = objectInput.readUTF();
-		location = objectInput.readUTF();
+		location = objectInput.readLong();
 		active = objectInput.readBoolean();
-		category = objectInput.readUTF();
+		category = objectInput.readLong();
 		status = objectInput.readUTF();
 		mimeType = objectInput.readUTF();
 		currentUserId = objectInput.readLong();
@@ -223,21 +211,9 @@ public class AssetCacheModel implements CacheModel<Asset>, Externalizable {
 			objectOutput.writeUTF(description);
 		}
 
-		if (location == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(location);
-		}
-
+		objectOutput.writeLong(location);
 		objectOutput.writeBoolean(active);
-
-		if (category == null) {
-			objectOutput.writeUTF(StringPool.BLANK);
-		}
-		else {
-			objectOutput.writeUTF(category);
-		}
+		objectOutput.writeLong(category);
 
 		if (status == null) {
 			objectOutput.writeUTF(StringPool.BLANK);
@@ -266,9 +242,9 @@ public class AssetCacheModel implements CacheModel<Asset>, Externalizable {
 	public long modifiedDate;
 	public String name;
 	public String description;
-	public String location;
+	public long location;
 	public Boolean active;
-	public String category;
+	public long category;
 	public String status;
 	public String mimeType;
 	public Long currentUserId;

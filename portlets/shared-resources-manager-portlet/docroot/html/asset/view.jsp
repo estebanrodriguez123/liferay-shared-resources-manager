@@ -26,9 +26,17 @@
 
 	List<AssetCategory> categories = AssetCategoryLocalServiceUtil.getAssetCategories(themeDisplay.getScopeGroupId(),
 			themeDisplay.getCompanyId(), QueryUtil.ALL_POS, QueryUtil.ALL_POS);
-
+	Map<Long, AssetCategory> categoriesMap = new HashMap<Long, AssetCategory>();
+	for(AssetCategory c : categories) {
+	    categoriesMap.put(c.getPrimaryKey(), c);
+	}
+	
 	List<AssetLocation> locations = AssetLocationLocalServiceUtil.getAssetLocations(themeDisplay.getScopeGroupId(),
 			themeDisplay.getCompanyId(), QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+	Map<Long, AssetLocation> locationsMap = new HashMap<Long, AssetLocation>();
+	for(AssetLocation c : locations) {
+	    locationsMap.put(c.getPrimaryKey(), c);
+	}
 %>
 
 
@@ -76,11 +84,13 @@
 									
 					</liferay-ui:search-container-column-text>
 
-					<liferay-ui:search-container-column-text property="location"
-						orderable="true" href="<%=editAssetURL%>" />
-
-					<liferay-ui:search-container-column-text property="category"
-						orderable="true" href="<%=editAssetURL%>" />
+					<liferay-ui:search-container-column-text name="location" href="<%=editAssetURL%>">
+						<%= locationsMap.get(asset.getLocation()).getName() %>
+					</liferay-ui:search-container-column-text>
+					
+					<liferay-ui:search-container-column-text name="category" href="<%=editAssetURL%>">
+						<%= categoriesMap.get(asset.getCategory()).getName() %>
+					</liferay-ui:search-container-column-text>
 
 					<liferay-ui:search-container-column-text property="name"
 						orderable="true" href="<%=editAssetURL%>" />
@@ -112,46 +122,40 @@
 			<!-- Available Assets  -->
 
 			<aui:form method="POST" name="<portlet:namespace />fm">
-				<aui:input name="searchText" value="<%=searchText%>" type="hidden"></aui:input>
 				<aui:row>
-					<aui:column>
-						<aui:select name="location" showEmptyOption="true"
-							onChange="this.form.submit()">
-							<%
-								for (AssetLocation locationItem : locations) {
-							%>
-							<aui:option value="<%=locationItem.getName()%>"><%=locationItem.getName()%></aui:option>
-							<%
-								}
-							%>
-						</aui:select>
-					</aui:column>
-					<aui:column>
-						<aui:select name="category" showEmptyOption="true"
-							onChange="this.form.submit()">
-							<%
-								for (AssetCategory categoryItem : categories) {
-							%>
-							<aui:option value="<%=categoryItem.getName()%>"><%=categoryItem.getName()%></aui:option>
-							<%
-								}
-							%>
-						</aui:select>
-					</aui:column>
+					<aui:select name="location" showEmptyOption="true" inlineField="true"
+						onChange="this.form.submit()">
+						<%
+							for (AssetLocation locationItem : locations) {
+						%>
+						<aui:option value="<%=locationItem.getPrimaryKey()%>"><%=locationItem.getName()%></aui:option>
+						<%
+							}
+						%>
+					</aui:select>
+					<aui:select name="category" showEmptyOption="true" inlineField="true"
+						onChange="this.form.submit()">
+						<%
+							for (AssetCategory categoryItem : categories) {
+						%>
+						<aui:option value="<%=categoryItem.getPrimaryKey()%>"><%=categoryItem.getName()%></aui:option>
+						<%
+							}
+						%>
+					</aui:select>
+				</aui:row>
+				<aui:row>
+					<aui:nav-bar>
+						<aui:nav-bar-search cssClass="pull-right">
+							<div class="form-search">
+								<liferay-ui:input-search name="searchText" placeholder="Keywords" />
+							</div>
+						</aui:nav-bar-search>
+					</aui:nav-bar>
 				</aui:row>
 			</aui:form>
 
-			<aui:nav-bar>
-				<aui:nav-bar-search cssClass="pull-right">
-					<div class="form-search">
-						<aui:form method="POST" name="<portlet:namespace />fm">
-							<aui:input name="category" value="<%=category%>" type="hidden"></aui:input>
-							<aui:input name="location" value="<%=location%>" type="hidden"></aui:input>
-							<liferay-ui:input-search name="searchText" placeholder="Keywords" />
-						</aui:form>
-					</div>
-				</aui:nav-bar-search>
-			</aui:nav-bar>
+			
 
 			<liferay-ui:search-container var="searchContainer"
 				iteratorURL="<%=portletURL%>" emptyResultsMessage="no-assets"
@@ -188,11 +192,13 @@
 									
 					</liferay-ui:search-container-column-text>
 
-					<liferay-ui:search-container-column-text property="location"
-						orderable="true" href="<%=editAssetURL%>" />
-
-					<liferay-ui:search-container-column-text property="category"
-						orderable="true" href="<%=editAssetURL%>" />
+					<liferay-ui:search-container-column-text name="location" href="<%=editAssetURL%>">
+						<%= locationsMap.get(asset.getLocation()).getName() %>
+					</liferay-ui:search-container-column-text>
+					
+					<liferay-ui:search-container-column-text name="category" href="<%=editAssetURL%>">
+						<%= categoriesMap.get(asset.getCategory()).getName() %>
+					</liferay-ui:search-container-column-text>
 
 					<liferay-ui:search-container-column-text property="name"
 						orderable="true" href="<%=editAssetURL%>" />

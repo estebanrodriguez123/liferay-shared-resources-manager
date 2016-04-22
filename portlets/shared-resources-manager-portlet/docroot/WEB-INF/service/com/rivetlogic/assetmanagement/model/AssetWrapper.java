@@ -135,7 +135,7 @@ public class AssetWrapper implements Asset, ModelWrapper<Asset> {
 			setDescription(description);
 		}
 
-		String location = (String)attributes.get("location");
+		Long location = (Long)attributes.get("location");
 
 		if (location != null) {
 			setLocation(location);
@@ -147,7 +147,7 @@ public class AssetWrapper implements Asset, ModelWrapper<Asset> {
 			setActive(active);
 		}
 
-		String category = (String)attributes.get("category");
+		Long category = (Long)attributes.get("category");
 
 		if (category != null) {
 			setCategory(category);
@@ -426,7 +426,7 @@ public class AssetWrapper implements Asset, ModelWrapper<Asset> {
 	* @return the location of this asset
 	*/
 	@Override
-	public java.lang.String getLocation() {
+	public long getLocation() {
 		return _asset.getLocation();
 	}
 
@@ -436,7 +436,7 @@ public class AssetWrapper implements Asset, ModelWrapper<Asset> {
 	* @param location the location of this asset
 	*/
 	@Override
-	public void setLocation(java.lang.String location) {
+	public void setLocation(long location) {
 		_asset.setLocation(location);
 	}
 
@@ -466,7 +466,7 @@ public class AssetWrapper implements Asset, ModelWrapper<Asset> {
 	* @return the category of this asset
 	*/
 	@Override
-	public java.lang.String getCategory() {
+	public long getCategory() {
 		return _asset.getCategory();
 	}
 
@@ -476,7 +476,7 @@ public class AssetWrapper implements Asset, ModelWrapper<Asset> {
 	* @param category the category of this asset
 	*/
 	@Override
-	public void setCategory(java.lang.String category) {
+	public void setCategory(long category) {
 		_asset.setCategory(category);
 	}
 

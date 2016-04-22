@@ -255,19 +255,20 @@ public interface AssetMessageModel extends BaseModel<AssetMessage> {
 	public Object clone();
 
 	@Override
-	public int compareTo(AssetMessage assetMessage);
+	public int compareTo(
+		com.rivetlogic.assetmanagement.model.AssetMessage assetMessage);
 
 	@Override
 	public int hashCode();
 
 	@Override
-	public CacheModel<AssetMessage> toCacheModel();
+	public CacheModel<com.rivetlogic.assetmanagement.model.AssetMessage> toCacheModel();
 
 	@Override
-	public AssetMessage toEscapedModel();
+	public com.rivetlogic.assetmanagement.model.AssetMessage toEscapedModel();
 
 	@Override
-	public AssetMessage toUnescapedModel();
+	public com.rivetlogic.assetmanagement.model.AssetMessage toUnescapedModel();
 
 	@Override
 	public String toString();

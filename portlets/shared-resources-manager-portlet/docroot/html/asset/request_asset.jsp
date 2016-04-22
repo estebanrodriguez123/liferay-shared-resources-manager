@@ -69,21 +69,28 @@
 	localizeTitle="true" showBackURL="true" title="request-asset" />
 
 <aui:row>
-	<aui:column>
+	<aui:col cssClass="resource-image-container" width="30">
+		<portlet:resourceURL var="imageResourceURL">
+			<portlet:param name="assetId" value="<%=String.valueOf(assetId)%>" />
+		</portlet:resourceURL>
+		<img class="" src="<%=imageResourceURL.toString()%>"
+				alt="<%=asset.getName()%>" />
+	</aui:col>
+	<aui:column width="70">
 
 		<!-- Info of asset and request date -->
 		<liferay-ui:message key="location" />:
-		<%=asset.getLocation()%><br />
+		<%=AssetLocationLocalServiceUtil.fetchAssetLocation(asset.getLocation()).getName()%><br />
 
 		<liferay-ui:message key="category" />:
-		<%=asset.getCategory()%><br />
+		<%=AssetCategoryLocalServiceUtil.fetchAssetCategory(asset.getCategory()).getName()%><br />
 
 		<liferay-ui:message key="name" />:
 		<%=asset.getName()%><br />
 
 		<liferay-ui:message key="description" />:
 		<br />
-		<textarea readonly="readonly"><%=asset.getDescription()%></textarea>
+		<div><%=asset.getDescription()%></div>
 		<br />
 
 		<liferay-ui:message key="status" />:
@@ -106,8 +113,7 @@
 				
 			</c:if>
 		</c:if>
-
-
+		
 		<!--TODO: check if already in waiting list   -->
 		<c:choose>
 			<c:when
@@ -149,27 +155,11 @@
 					<aui:button-row>
 						<aui:button type="submit" value="book-asset"></aui:button>
 					</aui:button-row>
-
 				</aui:form>
 			</c:otherwise>
 		</c:choose>
-
-	</aui:column>
-
-	<aui:column>
-
-		<div class="control-group input-text-wrapper request-asset-image-container">
-			<label class="control-label">Photo </label>
-					<portlet:resourceURL var="imageResourceURL">
-						<portlet:param name="assetId" value="<%=String.valueOf(assetId)%>" />
-					</portlet:resourceURL>
-					<img class="request-asset-image" src="<%=imageResourceURL.toString()%>"
-						alt="<%=asset.getName()%>" />
-		</div>
-
 	</aui:column>
 </aui:row>
-
 
 <liferay-ui:search-container var="searchContainer"
 	iteratorURL="<%=portletURL%>" emptyResultsMessage="no-asset-requests">

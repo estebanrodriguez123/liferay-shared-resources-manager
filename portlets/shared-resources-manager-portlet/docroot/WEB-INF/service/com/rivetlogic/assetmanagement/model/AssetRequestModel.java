@@ -359,19 +359,20 @@ public interface AssetRequestModel extends BaseModel<AssetRequest>,
 	public Object clone();
 
 	@Override
-	public int compareTo(AssetRequest assetRequest);
+	public int compareTo(
+		com.rivetlogic.assetmanagement.model.AssetRequest assetRequest);
 
 	@Override
 	public int hashCode();
 
 	@Override
-	public CacheModel<AssetRequest> toCacheModel();
+	public CacheModel<com.rivetlogic.assetmanagement.model.AssetRequest> toCacheModel();
 
 	@Override
-	public AssetRequest toEscapedModel();
+	public com.rivetlogic.assetmanagement.model.AssetRequest toEscapedModel();
 
 	@Override
-	public AssetRequest toUnescapedModel();
+	public com.rivetlogic.assetmanagement.model.AssetRequest toUnescapedModel();
 
 	@Override
 	public String toString();

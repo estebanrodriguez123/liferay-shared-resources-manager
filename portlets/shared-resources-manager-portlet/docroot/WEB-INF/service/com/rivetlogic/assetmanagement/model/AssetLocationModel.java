@@ -242,19 +242,20 @@ public interface AssetLocationModel extends BaseModel<AssetLocation> {
 	public Object clone();
 
 	@Override
-	public int compareTo(AssetLocation assetLocation);
+	public int compareTo(
+		com.rivetlogic.assetmanagement.model.AssetLocation assetLocation);
 
 	@Override
 	public int hashCode();
 
 	@Override
-	public CacheModel<AssetLocation> toCacheModel();
+	public CacheModel<com.rivetlogic.assetmanagement.model.AssetLocation> toCacheModel();
 
 	@Override
-	public AssetLocation toEscapedModel();
+	public com.rivetlogic.assetmanagement.model.AssetLocation toEscapedModel();
 
 	@Override
-	public AssetLocation toUnescapedModel();
+	public com.rivetlogic.assetmanagement.model.AssetLocation toUnescapedModel();
 
 	@Override
 	public String toString();

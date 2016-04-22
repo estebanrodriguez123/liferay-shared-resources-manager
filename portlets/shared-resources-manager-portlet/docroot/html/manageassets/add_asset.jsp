@@ -43,7 +43,7 @@
 			<%
 				for (AssetLocation location : locations) {
 			%>
-			<aui:option value="<%=location.getName()%>"><%=location.getName()%></aui:option>
+			<aui:option value="<%=location.getPrimaryKey()%>"><%=location.getName()%></aui:option>
 			<%
 				}
 			%>
@@ -53,7 +53,7 @@
 			<%
 				for (AssetCategory category : categories) {
 			%>
-			<aui:option value="<%=category.getName()%>"><%=category.getName()%></aui:option>
+			<aui:option value="<%=category.getPrimaryKey()%>"><%=category.getName()%></aui:option>
 			<%
 				}
 			%>
