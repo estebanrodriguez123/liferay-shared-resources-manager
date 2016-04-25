@@ -1,18 +1,23 @@
-.request-asset-image-container {
-	height: 200px;
+@media (max-width: 979px) and (min-width: 768px) {
+	.aui .row-fluid .resource-image-container {
+		width: 100%;
+	}
 }
 
-.request-asset-image {
-	width: auto;
-    height: calc(100% - 20px)!important;
+@media (max-width: 768px) {
+	.resource-image-container {
+		text-align: center;
+	}
+	
+	.resource-image-container img {
+		width: 60%;
+	}
 }
 
-/* Image style in the columns */
 .table-column-image {
-	width: 15%;
+	width: 10%;
 }
 
-.column-image {
-	width: 100%;
-	height: auto;
+.resource-image-container img {
+		max-width: 50%;
 }

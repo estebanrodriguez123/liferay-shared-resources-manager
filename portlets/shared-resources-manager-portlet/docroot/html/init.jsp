@@ -43,6 +43,8 @@
 <%@page import="com.rivetlogic.assetmanagement.model.impl.AssetStatus"%>
 
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page import="com.liferay.portal.kernel.dao.orm.QueryUtil" %>
 <%@ page import="com.liferay.portal.kernel.language.LanguageUtil" %>
 

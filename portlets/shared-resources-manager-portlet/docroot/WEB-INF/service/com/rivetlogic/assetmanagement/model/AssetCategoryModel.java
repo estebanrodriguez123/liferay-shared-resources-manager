@@ -242,19 +242,20 @@ public interface AssetCategoryModel extends BaseModel<AssetCategory> {
 	public Object clone();
 
 	@Override
-	public int compareTo(AssetCategory assetCategory);
+	public int compareTo(
+		com.rivetlogic.assetmanagement.model.AssetCategory assetCategory);
 
 	@Override
 	public int hashCode();
 
 	@Override
-	public CacheModel<AssetCategory> toCacheModel();
+	public CacheModel<com.rivetlogic.assetmanagement.model.AssetCategory> toCacheModel();
 
 	@Override
-	public AssetCategory toEscapedModel();
+	public com.rivetlogic.assetmanagement.model.AssetCategory toEscapedModel();
 
 	@Override
-	public AssetCategory toUnescapedModel();
+	public com.rivetlogic.assetmanagement.model.AssetCategory toUnescapedModel();
 
 	@Override
 	public String toString();

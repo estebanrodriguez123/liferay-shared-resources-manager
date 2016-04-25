@@ -23,9 +23,9 @@
 		<!-- Other fields -->
 		<column name="name" type="String" />
 		<column name="description" type="String" />
-		<column name="location" type="String" />
+		<column name="location" type="long" />
 		<column name="active" type="Boolean" />
-		<column name="category" type="String" />
+		<column name="category" type="long" />
 		<column name="status" type="String" />
 		<column name="mimeType" type="String" />
 		<column name="photo" type="Blob" />

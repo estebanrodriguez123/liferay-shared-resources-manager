@@ -195,18 +195,17 @@ public class AssetLocalServiceImpl extends AssetLocalServiceBaseImpl {
 			for (String keyword : keywords) {
 				keywordsDisjunction.add(RestrictionsFactoryUtil.ilike("name", StringPool.PERCENT + keyword + StringPool.PERCENT));
 				keywordsDisjunction.add(RestrictionsFactoryUtil.ilike("description", StringPool.PERCENT + keyword + StringPool.PERCENT));
-				keywordsDisjunction.add(RestrictionsFactoryUtil.ilike("category", StringPool.PERCENT + keyword + StringPool.PERCENT));
 			}
 		}
 
 		dynamicQuery.add(keywordsDisjunction);
 
 		if (Validator.isNotNull(category)) {
-			dynamicQuery.add(PropertyFactoryUtil.forName("category").eq(category));
+			dynamicQuery.add(PropertyFactoryUtil.forName("category").eq(Long.parseLong(category)));
 		}
 
 		if (Validator.isNotNull(location)) {
-			dynamicQuery.add(PropertyFactoryUtil.forName("location").eq(location));
+			dynamicQuery.add(PropertyFactoryUtil.forName("location").eq(Long.parseLong(location)));
 		}
 
 		dynamicQuery.add(PropertyFactoryUtil.forName("active").eq(true));
@@ -251,18 +250,17 @@ public class AssetLocalServiceImpl extends AssetLocalServiceBaseImpl {
 			for (String keyword : keywords) {
 				keywordsDisjunction.add(RestrictionsFactoryUtil.ilike("name", StringPool.PERCENT + keyword + StringPool.PERCENT));
 				keywordsDisjunction.add(RestrictionsFactoryUtil.ilike("description", StringPool.PERCENT + keyword + StringPool.PERCENT));
-				keywordsDisjunction.add(RestrictionsFactoryUtil.ilike("category", StringPool.PERCENT + keyword + StringPool.PERCENT));
 			}
 		}
 
 		dynamicQuery.add(keywordsDisjunction);
 
 		if (Validator.isNotNull(category)) {
-			dynamicQuery.add(PropertyFactoryUtil.forName("category").eq(category));
+			dynamicQuery.add(PropertyFactoryUtil.forName("category").eq(Long.parseLong(category)));
 		}
 
 		if (Validator.isNotNull(location)) {
-			dynamicQuery.add(PropertyFactoryUtil.forName("location").eq(location));
+			dynamicQuery.add(PropertyFactoryUtil.forName("location").eq(Long.parseLong(location)));
 		}
 		
 
@@ -295,18 +293,17 @@ public class AssetLocalServiceImpl extends AssetLocalServiceBaseImpl {
 			for (String keyword : keywords) {
 				disjunction.add(RestrictionsFactoryUtil.ilike("name", StringPool.PERCENT + keyword + StringPool.PERCENT));
 				disjunction.add(RestrictionsFactoryUtil.ilike("description", StringPool.PERCENT + keyword + StringPool.PERCENT));
-				disjunction.add(RestrictionsFactoryUtil.ilike("category", StringPool.PERCENT + keyword + StringPool.PERCENT));
 			}
 		}
 
 		dynamicQuery.add(disjunction);
 
 		if (Validator.isNotNull(category)) {
-			dynamicQuery.add(PropertyFactoryUtil.forName("category").eq(category));
+			dynamicQuery.add(PropertyFactoryUtil.forName("category").eq(Long.parseLong(category)));
 		}
 
 		if (Validator.isNotNull(location)) {
-			dynamicQuery.add(PropertyFactoryUtil.forName("location").eq(location));
+			dynamicQuery.add(PropertyFactoryUtil.forName("location").eq(Long.parseLong(location)));
 		}
 
 		dynamicQuery.setLimit(start, end);
@@ -342,18 +339,17 @@ public class AssetLocalServiceImpl extends AssetLocalServiceBaseImpl {
 			for (String keyword : keywords) {
 				disjunction.add(RestrictionsFactoryUtil.ilike("name", StringPool.PERCENT + keyword + StringPool.PERCENT));
 				disjunction.add(RestrictionsFactoryUtil.ilike("description", StringPool.PERCENT + keyword + StringPool.PERCENT));
-				disjunction.add(RestrictionsFactoryUtil.ilike("category", StringPool.PERCENT + keyword + StringPool.PERCENT));
 			}
 		}
 
 		dynamicQuery.add(disjunction);
 
 		if (Validator.isNotNull(category)) {
-			dynamicQuery.add(PropertyFactoryUtil.forName("category").eq(category));
+			dynamicQuery.add(PropertyFactoryUtil.forName("category").eq(Long.parseLong(category)));
 		}
 
 		if (Validator.isNotNull(location)) {
-			dynamicQuery.add(PropertyFactoryUtil.forName("location").eq(location));
+			dynamicQuery.add(PropertyFactoryUtil.forName("location").eq(Long.parseLong(location)));
 		}
 
 		try {

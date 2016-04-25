@@ -243,15 +243,14 @@ public interface AssetModel extends BaseModel<Asset>, StagedGroupedModel {
 	 *
 	 * @return the location of this asset
 	 */
-	@AutoEscape
-	public String getLocation();
+	public long getLocation();
 
 	/**
 	 * Sets the location of this asset.
 	 *
 	 * @param location the location of this asset
 	 */
-	public void setLocation(String location);
+	public void setLocation(long location);
 
 	/**
 	 * Returns the active of this asset.
@@ -272,15 +271,14 @@ public interface AssetModel extends BaseModel<Asset>, StagedGroupedModel {
 	 *
 	 * @return the category of this asset
 	 */
-	@AutoEscape
-	public String getCategory();
+	public long getCategory();
 
 	/**
 	 * Sets the category of this asset.
 	 *
 	 * @param category the category of this asset
 	 */
-	public void setCategory(String category);
+	public void setCategory(long category);
 
 	/**
 	 * Returns the status of this asset.
@@ -377,19 +375,19 @@ public interface AssetModel extends BaseModel<Asset>, StagedGroupedModel {
 	public Object clone();
 
 	@Override
-	public int compareTo(Asset asset);
+	public int compareTo(com.rivetlogic.assetmanagement.model.Asset asset);
 
 	@Override
 	public int hashCode();
 
 	@Override
-	public CacheModel<Asset> toCacheModel();
+	public CacheModel<com.rivetlogic.assetmanagement.model.Asset> toCacheModel();
 
 	@Override
-	public Asset toEscapedModel();
+	public com.rivetlogic.assetmanagement.model.Asset toEscapedModel();
 
 	@Override
-	public Asset toUnescapedModel();
+	public com.rivetlogic.assetmanagement.model.Asset toUnescapedModel();
 
 	@Override
 	public String toString();

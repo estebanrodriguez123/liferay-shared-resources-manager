@@ -160,7 +160,7 @@ public class AssetClp extends BaseModelImpl<Asset> implements Asset {
 			setDescription(description);
 		}
 
-		String location = (String)attributes.get("location");
+		Long location = (Long)attributes.get("location");
 
 		if (location != null) {
 			setLocation(location);
@@ -172,7 +172,7 @@ public class AssetClp extends BaseModelImpl<Asset> implements Asset {
 			setActive(active);
 		}
 
-		String category = (String)attributes.get("category");
+		Long category = (Long)attributes.get("category");
 
 		if (category != null) {
 			setCategory(category);
@@ -444,19 +444,19 @@ public class AssetClp extends BaseModelImpl<Asset> implements Asset {
 	}
 
 	@Override
-	public String getLocation() {
+	public long getLocation() {
 		return _location;
 	}
 
 	@Override
-	public void setLocation(String location) {
+	public void setLocation(long location) {
 		_location = location;
 
 		if (_assetRemoteModel != null) {
 			try {
 				Class<?> clazz = _assetRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setLocation", String.class);
+				Method method = clazz.getMethod("setLocation", long.class);
 
 				method.invoke(_assetRemoteModel, location);
 			}
@@ -490,19 +490,19 @@ public class AssetClp extends BaseModelImpl<Asset> implements Asset {
 	}
 
 	@Override
-	public String getCategory() {
+	public long getCategory() {
 		return _category;
 	}
 
 	@Override
-	public void setCategory(String category) {
+	public void setCategory(long category) {
 		_category = category;
 
 		if (_assetRemoteModel != null) {
 			try {
 				Class<?> clazz = _assetRemoteModel.getClass();
 
-				Method method = clazz.getMethod("setCategory", String.class);
+				Method method = clazz.getMethod("setCategory", long.class);
 
 				method.invoke(_assetRemoteModel, category);
 			}
@@ -888,9 +888,9 @@ public class AssetClp extends BaseModelImpl<Asset> implements Asset {
 	private Date _modifiedDate;
 	private String _name;
 	private String _description;
-	private String _location;
+	private long _location;
 	private Boolean _active;
-	private String _category;
+	private long _category;
 	private String _status;
 	private String _mimeType;
 	private Blob _photo;

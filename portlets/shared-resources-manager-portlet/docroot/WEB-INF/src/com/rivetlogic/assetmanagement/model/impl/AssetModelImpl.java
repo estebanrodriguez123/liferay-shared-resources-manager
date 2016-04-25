@@ -74,15 +74,15 @@ public class AssetModelImpl extends BaseModelImpl<Asset> implements AssetModel {
 			{ "modifiedDate", Types.TIMESTAMP },
 			{ "name", Types.VARCHAR },
 			{ "description", Types.VARCHAR },
-			{ "location", Types.VARCHAR },
+			{ "location", Types.BIGINT },
 			{ "active_", Types.BOOLEAN },
-			{ "category", Types.VARCHAR },
+			{ "category", Types.BIGINT },
 			{ "status", Types.VARCHAR },
 			{ "mimeType", Types.VARCHAR },
 			{ "photo", Types.BLOB },
 			{ "currentUserId", Types.BIGINT }
 		};
-	public static final String TABLE_SQL_CREATE = "create table rivetlogic_Asset (uuid_ VARCHAR(75) null,assetId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null,description TEXT null,location VARCHAR(75) null,active_ BOOLEAN,category VARCHAR(75) null,status VARCHAR(75) null,mimeType VARCHAR(75) null,photo BLOB,currentUserId LONG)";
+	public static final String TABLE_SQL_CREATE = "create table rivetlogic_Asset (uuid_ VARCHAR(75) null,assetId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null,description TEXT null,location LONG,active_ BOOLEAN,category LONG,status VARCHAR(75) null,mimeType VARCHAR(75) null,photo BLOB,currentUserId LONG)";
 	public static final String TABLE_SQL_DROP = "drop table rivetlogic_Asset";
 	public static final String ORDER_BY_JPQL = " ORDER BY asset.assetId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY rivetlogic_Asset.assetId ASC";
@@ -226,7 +226,7 @@ public class AssetModelImpl extends BaseModelImpl<Asset> implements AssetModel {
 			setDescription(description);
 		}
 
-		String location = (String)attributes.get("location");
+		Long location = (Long)attributes.get("location");
 
 		if (location != null) {
 			setLocation(location);
@@ -238,7 +238,7 @@ public class AssetModelImpl extends BaseModelImpl<Asset> implements AssetModel {
 			setActive(active);
 		}
 
-		String category = (String)attributes.get("category");
+		Long category = (Long)attributes.get("category");
 
 		if (category != null) {
 			setCategory(category);
@@ -446,17 +446,12 @@ public class AssetModelImpl extends BaseModelImpl<Asset> implements AssetModel {
 	}
 
 	@Override
-	public String getLocation() {
-		if (_location == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _location;
-		}
+	public long getLocation() {
+		return _location;
 	}
 
 	@Override
-	public void setLocation(String location) {
+	public void setLocation(long location) {
 		_location = location;
 	}
 
@@ -471,17 +466,12 @@ public class AssetModelImpl extends BaseModelImpl<Asset> implements AssetModel {
 	}
 
 	@Override
-	public String getCategory() {
-		if (_category == null) {
-			return StringPool.BLANK;
-		}
-		else {
-			return _category;
-		}
+	public long getCategory() {
+		return _category;
 	}
 
 	@Override
-	public void setCategory(String category) {
+	public void setCategory(long category) {
 		_category = category;
 	}
 
@@ -748,21 +738,9 @@ public class AssetModelImpl extends BaseModelImpl<Asset> implements AssetModel {
 
 		assetCacheModel.location = getLocation();
 
-		String location = assetCacheModel.location;
-
-		if ((location != null) && (location.length() == 0)) {
-			assetCacheModel.location = null;
-		}
-
 		assetCacheModel.active = getActive();
 
 		assetCacheModel.category = getCategory();
-
-		String category = assetCacheModel.category;
-
-		if ((category != null) && (category.length() == 0)) {
-			assetCacheModel.category = null;
-		}
 
 		assetCacheModel.status = getStatus();
 
@@ -924,9 +902,9 @@ public class AssetModelImpl extends BaseModelImpl<Asset> implements AssetModel {
 	private Date _modifiedDate;
 	private String _name;
 	private String _description;
-	private String _location;
+	private long _location;
 	private Boolean _active;
-	private String _category;
+	private long _category;
 	private String _status;
 	private String _mimeType;
 	private AssetPhotoBlobModel _photoBlobModel;

@@ -16,23 +16,7 @@
 	escapeXml="<%=false%>" localizeTitle="<%=true%>"
 	showBackURL="<%=true%>" title="view-asset-categories" />
 
-
-<portlet:actionURL name="addAssetCategory" var="addAssetCategoryURL" />
-
-
-<liferay-ui:panel collapsible="true" extended="true" state="closed"
-	title="Add Categories">
-	<div class="form-search">
-		<aui:form method="POST" action="<%=addAssetCategoryURL%>"
-			name="<portlet:namespace />fm">
-			<aui:fieldset>
-				<aui:input name="redirect" type="hidden" value="<%=currentURL%>" />
-				<aui:input name="name" placeholder="Category Name"></aui:input>
-			</aui:fieldset>
-			<aui:button type="submit" value="add-asset-category"></aui:button>
-		</aui:form>
-	</div>
-</liferay-ui:panel>
+<aui:button value="add-category" icon="icon-plus" onClick="showDialog('category', null, null)" />
 
 <liferay-ui:search-container var="searchContainer"
 	iteratorURL="<%=portletURL%>" emptyResultsMessage="no-asset-categories">
@@ -48,49 +32,20 @@
 
 		<liferay-ui:search-container-column-text property="name" />
 
-		<c:choose>
-			<c:when
-				test="<%=themeDisplay.getScopeGroupId() == assetCategory.getGroupId()%>">
-				<portlet:actionURL name="deleteAssetCategory"
-					var="deleteAssetCategoryURL">
-					<portlet:param name="assetCategoryId"
-						value="<%=String.valueOf(assetCategory.getAssetCategoryId())%>" />
-					<portlet:param name="redirect" value="<%=currentURL%>" />
-				</portlet:actionURL>
-				<liferay-ui:search-container-column-text
-					href="<%=deleteAssetCategoryURL%>">
-					<liferay-ui:icon image="delete" />
-				</liferay-ui:search-container-column-text>
-			</c:when>
-			<c:otherwise>
-				<liferay-ui:search-container-column-text>
-					<liferay-ui:message key="global-resource-category" />
-				</liferay-ui:search-container-column-text>
-			</c:otherwise>
-		</c:choose>
+		<liferay-ui:search-container-column-text name="actions">
+			<c:if test="<%=themeDisplay.getScopeGroupId() == assetCategory.getGroupId()%>">
+			<liferay-ui:icon image="edit" message="edit" url="javascript:;"
+				 onClick="showDialog('category', '${ assetCategory.name }', ${ assetCategory.assetCategoryId })" label="true" />
+			</c:if>
+		</liferay-ui:search-container-column-text>
 
 	</liferay-ui:search-container-row>
 
 	<liferay-ui:search-iterator />
 </liferay-ui:search-container>
+<hr/>
 
-
-<portlet:actionURL name="addAssetLocation" var="addAssetLocationURL" />
-
-
-<liferay-ui:panel collapsible="true" extended="true" state="closed"
-	title="Add Locations">
-	<div class="form-search">
-		<aui:form method="POST" action="<%=addAssetLocationURL%>"
-			name="<portlet:namespace />fm">
-			<aui:fieldset>
-				<aui:input name="redirect" type="hidden" value="<%=currentURL%>" />
-				<aui:input name="name" placeholder="Location Name"></aui:input>
-			</aui:fieldset>
-			<aui:button type="submit" value="add-asset-location"></aui:button>
-		</aui:form>
-	</div>
-</liferay-ui:panel>
+<aui:button value="add-location" icon="icon-plus" onClick="showDialog('location', null, null)"/>
 
 <liferay-ui:search-container var="searchContainer"
 	iteratorURL="<%=portletURL%>" emptyResultsMessage="no-asset-locations">
@@ -105,30 +60,47 @@
 		keyProperty="assetLocationId" modelVar="assetLocation">
 
 		<liferay-ui:search-container-column-text property="name" />
-
-		<c:choose>
-			<c:when
-				test="<%=themeDisplay.getScopeGroupId() == assetLocation.getGroupId()%>">
-				<portlet:actionURL name="deleteAssetLocation"
-					var="deleteAssetLocationURL">
-					<portlet:param name="assetLocationId"
-						value="<%=String.valueOf(assetLocation.getAssetLocationId())%>" />
-					<portlet:param name="redirect" value="<%=currentURL%>" />
-				</portlet:actionURL>
-				<liferay-ui:search-container-column-text
-					href="<%=deleteAssetLocationURL%>">
-					<liferay-ui:icon image="delete" />
-				</liferay-ui:search-container-column-text>
-			</c:when>
-			<c:otherwise>
-				<liferay-ui:search-container-column-text>
-					<liferay-ui:message key="global-resource-location" />
-				</liferay-ui:search-container-column-text>
-			</c:otherwise>
-		</c:choose>
-
+		
+		<liferay-ui:search-container-column-text name="actions">
+			<c:if test="<%=themeDisplay.getScopeGroupId() == assetLocation.getGroupId()%>">
+			<liferay-ui:icon image="edit" message="edit" url="javascript:;"
+				 onClick="showDialog('location', '${ assetLocation.name }', ${ assetLocation.assetLocationId })" label="true" />
+			</c:if>
+		</liferay-ui:search-container-column-text>
 
 	</liferay-ui:search-container-row>
 
 	<liferay-ui:search-iterator />
 </liferay-ui:search-container>
+
+<div class="hide">
+<aui:container id="edit-dialog">
+	<aui:form name="dialog-form">
+		<aui:input name="redirect" type="hidden" value="<%=currentURL%>" />
+		<aui:input name="id" type="hidden" value="null"/>
+		<aui:input name="name" required="true" />
+		<aui:button-row cssClass="pull-right">
+			<aui:button value="save" type="submit" cssClass="btn-primary" />
+		</aui:button-row>
+	</aui:form>
+</aui:container>
+</div>
+
+<aui:script use="aui-dialog">
+	Liferay.provide(window, 'showDialog', function(type, value, id) {
+		var categoryUrl = '<portlet:actionURL name="addAssetCategory" />';
+		var locationUrl = '<portlet:actionURL name="addAssetLocation" />';
+		A.one('#<portlet:namespace/>dialog-form').attr('action', type == 'category' ? categoryUrl : locationUrl)
+		A.one('#<portlet:namespace/>id').attr('value', id);
+		A.one('#<portlet:namespace/>name').attr('value', value);
+		Liferay.Util.openWindow({
+			dialog: {
+				centered: true,
+				width: '250',
+				height: '255',
+				bodyContent: A.one('#<portlet:namespace/>edit-dialog')
+			},
+			title: Liferay.Language.get((id? 'edit' : 'add') + '-' + type)
+		});
+	});
+</aui:script>

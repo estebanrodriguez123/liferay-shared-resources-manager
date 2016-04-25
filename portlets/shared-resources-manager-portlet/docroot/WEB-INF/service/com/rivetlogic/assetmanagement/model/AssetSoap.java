@@ -181,11 +181,11 @@ public class AssetSoap implements Serializable {
 		_description = description;
 	}
 
-	public String getLocation() {
+	public long getLocation() {
 		return _location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(long location) {
 		_location = location;
 	}
 
@@ -197,11 +197,11 @@ public class AssetSoap implements Serializable {
 		_active = active;
 	}
 
-	public String getCategory() {
+	public long getCategory() {
 		return _category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(long category) {
 		_category = category;
 	}
 
@@ -247,9 +247,9 @@ public class AssetSoap implements Serializable {
 	private Date _modifiedDate;
 	private String _name;
 	private String _description;
-	private String _location;
+	private long _location;
 	private Boolean _active;
-	private String _category;
+	private long _category;
 	private String _status;
 	private String _mimeType;
 	private Blob _photo;

@@ -62,9 +62,9 @@ public class ManageAssetsPortlet extends MVCPortlet {
 
 		asset.setName(ParamUtil.getString(request, "name"));
 		asset.setDescription(ParamUtil.getString(request, "description"));
-		asset.setLocation(ParamUtil.getString(request, "location"));
+		asset.setLocation(ParamUtil.getLong(request, "location"));
 		asset.setActive(ParamUtil.getBoolean(request, "active"));
-		asset.setCategory(ParamUtil.getString(request, "category"));
+		asset.setCategory(ParamUtil.getLong(request, "category"));
 
 		List<String> errors = new ArrayList<String>();
 
@@ -175,9 +175,9 @@ public class ManageAssetsPortlet extends MVCPortlet {
 
 		asset.setName(ParamUtil.getString(request, "name"));
 		asset.setDescription(ParamUtil.getString(request, "description"));
-		asset.setLocation(ParamUtil.getString(request, "location"));
+		asset.setLocation(ParamUtil.getLong(request, "location"));
 		asset.setActive(ParamUtil.getBoolean(request, "active"));
-		asset.setCategory(ParamUtil.getString(request, "category"));
+		asset.setCategory(ParamUtil.getLong(request, "category"));
 
 		List<String> errors = new ArrayList<String>();
 
@@ -205,14 +205,19 @@ public class ManageAssetsPortlet extends MVCPortlet {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 
+		long categoryId = ParamUtil.getLong(request, "id", -1);
 		String categoryName = ParamUtil.getString(request, "name");
 
-		AssetCategory assetCategory = AssetCategoryLocalServiceUtil.createAssetCategory(0);
-
-		assetCategory.setName(categoryName);
-
-		AssetCategoryLocalServiceUtil.addAssetCategory(themeDisplay, serviceContext, assetCategory);
-
+		if(categoryId == -1) {
+		    AssetCategory assetCategory = AssetCategoryLocalServiceUtil.createAssetCategory(0);
+		    assetCategory.setName(categoryName);
+		    AssetCategoryLocalServiceUtil.addAssetCategory(themeDisplay, serviceContext, assetCategory);
+		} else {
+		    AssetCategory assetCategory = AssetCategoryLocalServiceUtil.fetchAssetCategory(categoryId);
+		    assetCategory.setName(categoryName);
+		    AssetCategoryLocalServiceUtil.updateAssetCategory(assetCategory);
+		}
+		
 	}
 
 	public void deleteAssetCategory(ActionRequest request, ActionResponse response) throws SystemException, PortalException, IOException {
@@ -229,14 +234,19 @@ public class ManageAssetsPortlet extends MVCPortlet {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay) request.getAttribute(WebKeys.THEME_DISPLAY);
 
+		long categoryId = ParamUtil.getLong(request, "id", -1);
 		String categoryName = ParamUtil.getString(request, "name");
-
-		AssetLocation assetLocation = AssetLocationLocalServiceUtil.createAssetLocation(0);
-
-		assetLocation.setName(categoryName);
-
-		AssetLocationLocalServiceUtil.addAssetLocation(themeDisplay, serviceContext, assetLocation);
-
+		
+		if(categoryId == -1) {
+		    AssetLocation assetLocation = AssetLocationLocalServiceUtil.createAssetLocation(0);
+	        assetLocation.setName(categoryName);
+	        AssetLocationLocalServiceUtil.addAssetLocation(themeDisplay, serviceContext, assetLocation);
+		} else {
+		    AssetLocation assetLocation = AssetLocationLocalServiceUtil.fetchAssetLocation(categoryId);
+            assetLocation.setName(categoryName);
+            AssetLocationLocalServiceUtil.updateAssetLocation(assetLocation);
+		}
+		
 	}
 
 	public void deleteAssetLocation(ActionRequest request, ActionResponse response) throws SystemException, PortalException, IOException {
