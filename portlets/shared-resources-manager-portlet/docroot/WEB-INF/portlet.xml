@@ -11,10 +11,15 @@
 			<name>view-template</name>
 			<value>/html/manageassets/view.jsp</value>
 		</init-param>
+		<init-param>
+			<name>help-template</name>
+			<value>/html/help.jsp</value>
+		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
+			<portlet-mode>help</portlet-mode>
 		</supports>
 		<resource-bundle>content.Language</resource-bundle>
 		<portlet-info>
@@ -46,6 +51,10 @@
 			<value>/html/asset/view.jsp</value>
 		</init-param>
 		<init-param>
+			<name>help-template</name>
+			<value>/html/help.jsp</value>
+		</init-param>
+		<init-param>
 			<name>config-template</name>
 			<value>/html/asset/configuration.jsp</value>
 		</init-param>
@@ -53,6 +62,7 @@
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
+			<portlet-mode>help</portlet-mode>
 		</supports>
 		<resource-bundle>content.Language</resource-bundle>
 		<portlet-info>
