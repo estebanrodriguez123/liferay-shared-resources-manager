@@ -138,8 +138,10 @@ message="asset-success-created"/>
 
 				<aui:button type="cancel" onClick="<%= viewManageAssetsURL %>"></aui:button>
 
-				<aui:button value="delete-asset" cssClass="btn-danger"
-					onClick="javascript:confirmDel()" />
+				<c:if test="<%= !asset.getStatus().equalsIgnoreCase(\"booked\") %>">
+					<aui:button value="delete-asset" cssClass="btn-danger"
+						onClick="javascript:confirmDel()" />
+				</c:if>
 
 			</aui:button-row>
 

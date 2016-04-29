@@ -21,3 +21,8 @@
 .resource-image-container img {
 		max-width: 50%;
 }
+
+.column-image {
+	max-width: 100%;
+	width: 100%;
+}
