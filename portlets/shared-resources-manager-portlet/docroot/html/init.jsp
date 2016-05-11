@@ -47,6 +47,7 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.liferay.portal.kernel.dao.orm.QueryUtil" %>
 <%@ page import="com.liferay.portal.kernel.language.LanguageUtil" %>
+<%@page import="com.liferay.portal.kernel.util.GetterUtil"%>
 
 <%@ page import="java.text.DateFormat" %>
 
