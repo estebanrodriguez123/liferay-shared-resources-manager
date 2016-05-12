@@ -8,7 +8,7 @@
 	
 	String myAssetsTab = "my-assets";
 	String allAssetsTab = "all-assets";
-	String tab_cfg = GetterUtil.getString(portletPreferences.getValue("default-opened-tab", StringPool.TRUE));
+	String tab_cfg = GetterUtil.getString(portletPreferences.getValue("default-opened-tab", StringPool.BLANK));
 	if(null == tab_cfg || tab_cfg.isEmpty()){
 		tab_cfg = myAssetsTab;
 	}
