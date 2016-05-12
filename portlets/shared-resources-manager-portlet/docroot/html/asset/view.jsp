@@ -8,7 +8,7 @@
 
 	PortletURL portletURL = renderResponse.createRenderURL();
 	portletURL.setParameter("tabs1", tabs1);
-
+	
 	String redirect = PortalUtil.getCurrentURL(renderRequest);
 
 	String orderByCol = ParamUtil.getString(renderRequest, "orderByCol");
@@ -50,8 +50,9 @@
 		<c:if test='<%="all-assets".equals(tabs1)%>'>
 
 			<!-- Available Assets  -->
+			<c:set var="action" scope="page" value="?p_p_id=${portletDisplay.getId()}"/>
+			<aui:form method="POST" name="<portlet:namespace />fm" action="${action}">
 
-			<aui:form method="POST" name="<portlet:namespace />fm">
 				<aui:row>
 					<aui:select name="location" showEmptyOption="true" inlineField="true"
 						onChange="this.form.submit()">
